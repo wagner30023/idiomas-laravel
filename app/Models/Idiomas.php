@@ -11,4 +11,10 @@ class Idiomas extends Model
 
     protected $fillable = ['nome'];
 
+
+    public function traducoes()
+    {
+        return $this->belongsTo(Traducoes::class);
+    }
+
 }

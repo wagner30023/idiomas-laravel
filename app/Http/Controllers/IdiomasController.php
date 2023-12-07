@@ -48,12 +48,13 @@ class IdiomasController extends Controller
     public function show($idiomas)
     {
         try {
-            $idiomas = Idiomas::find($idiomas);
+            $idiomas = Idiomas::with('traducoes')->find($idiomas);
             // $idiomas = Idiomas::with('idiomas')->find($idiomas);
 
             if($idiomas){
                 $response = [
-                    'idiomas' => $idiomas
+                    'traducoes' => $idiomas,
+                    'idiomas' => $idiomas->traducoes,
                 ];
                 return $response;
             }
